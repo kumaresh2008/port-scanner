@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Port Sentinel</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #111827;
+            color: white;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #38bdf8;
+        }
+
+        .result {
+            padding: 12px;
+            margin: 8px 0;
+            background: #1f2937;
+            border-radius: 8px;
+        }
+
+        .OPEN {
+            border-left: 5px solid #22c55e;
+        }
+
+        .CLOSED {
+            border-left: 5px solid #ef4444;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🛡️ Port Sentinel</h1>
+<p>Network Port Scanning & Security Report Generator</p>
+
+<form method="POST">
+    <input type="text" name="target" value="127.0.0.1">
+    <button type="submit">Scan</button>
+</form>
+
+<h2>Scan Results</h2>
+
+{% if results %}
+    {% for result in results %}
+        <div class="result {{ result.status }}">
+            Port {{ result.port }} - {{ result.status }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
